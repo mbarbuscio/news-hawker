@@ -1,0 +1,13 @@
+<ng-select [items]="countries | async" [(ngModel)]="selectedCountry" bindLabel="name" [clearable]="false" notFoundText="Loading...">
+  <ng-template ng-label-tmp let-item="item">
+      <img height="20" width="20" [src]="flagUrl(item.flagCd)"/>
+      <b>{{item.countryNm}}</b>
+  </ng-template>
+  
+  <ng-template ng-option-tmp let-item="item" let-index="index" let-search="countryNm" >
+    <div (click)="setCountry(item)">
+      <img height="20" width="20" [src]="flagUrl(item.flagCd)"/>
+      <b>{{item.countryNm}}</b>
+    </div>
+  </ng-template>
+</ng-select>
