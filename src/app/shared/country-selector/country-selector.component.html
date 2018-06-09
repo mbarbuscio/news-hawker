@@ -1,4 +1,4 @@
-<ng-select [items]="countries | async" [(ngModel)]="selectedCountry" bindLabel="name" [clearable]="false" notFoundText="Loading...">
+<ng-select [items]="countries | async | sort: 'countryNm'" appendTo="body" [(ngModel)]="selectedCountry" bindLabel="name" [clearable]="false" notFoundText="Loading...">
   <ng-template ng-label-tmp let-item="item">
       <img height="20" width="20" [src]="flagUrl(item.flagCd)"/>
       <b>{{item.countryNm}}</b>
