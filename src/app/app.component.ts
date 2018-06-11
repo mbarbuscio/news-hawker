@@ -17,11 +17,17 @@ export class AppComponent implements OnDestroy {
         this.news = n.articles;
       });
     });
+
+    this.mobileViewSub = configService.isMobile().subscribe(isMobile => {
+      this.isMobile = isMobile;
+    }); 
   }
 
+  mobileViewSub: Subscription;
   countrySub: Subscription;
   newsSub: Subscription;
   news: any[];
+  isMobile: boolean;
 
   ngOnDestroy() {
     this.countrySub.unsubscribe();

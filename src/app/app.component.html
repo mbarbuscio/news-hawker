@@ -5,4 +5,4 @@
     <app-news *ngFor="let article of news" [article]="article"></app-news>
 </div>
 
-<app-settings></app-settings>
+<app-settings *ngIf="isMobile" ></app-settings>

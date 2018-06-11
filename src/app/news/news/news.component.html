@@ -2,6 +2,7 @@
     <mat-card-header>
         <img mat-card-avatar [src]="'https://besticon-demo.herokuapp.com/icon?url='+article.url+'&size=80'" [alt]="article.source.name" />
         <mat-card-title>{{article.title}}</mat-card-title>
+        <mat-card-subtitle>{{article.publishedAt | timeAgo}}</mat-card-subtitle>
     </mat-card-header>
     <img *ngIf="article.urlToImage" [src]="imgUrl(article.urlToImage)" mat-card-image />
     <mat-card-content *ngIf="article.description">
@@ -10,6 +11,6 @@
         </p>
       </mat-card-content>
     <mat-card-actions align="end">
-      <a [href]="article.url" target="_blank" mat-button>READ MORE</a>
+      <a [href]="article.url" target="_blank" mat-button color="primary">READ MORE</a>
     </mat-card-actions>
 </mat-card>

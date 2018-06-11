@@ -2,5 +2,5 @@
   <img src="./assets/logo_transparent_background.png" class="brand" />
 </div>
 <div class="nav-section right">
-    <app-country-selector></app-country-selector>
+    <app-country-selector *ngIf="!isMobile"></app-country-selector>
 </div>
