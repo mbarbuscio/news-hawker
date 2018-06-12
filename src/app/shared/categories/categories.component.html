@@ -1,0 +1,5 @@
+<mat-radio-group class="categories" [(ngModel)]="selectedCategory" (change)="updateCat()">
+    <mat-radio-button class="example-radio-button" *ngFor="let category of categories" [value]="category" color="primary">
+      {{category}}
+    </mat-radio-button>
+  </mat-radio-group>

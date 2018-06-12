@@ -1,0 +1,21 @@
+<div >
+
+  <mat-chip-list #sourcesList [multiple]="true" [(ngModel)]="selectedSources" style="max-height: 300px; overflow-y: scroll;" >
+    <mat-chip *ngFor="let source of sources" [hidden]="source.isSelected" [selectable]="selectable" color="primary" (click)="addSource(source)" > 
+      {{source.name}}</mat-chip>
+  </mat-chip-list>
+  <mat-form-field>
+      <mat-chip-list #selectedSourcesList>
+        <mat-chip *ngFor="let source of selectedSources" class="selected" removable="true" selectable="false" (removed)="remove(source)" >
+          {{source.name}}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <input 
+        style="height: 0;"
+        [matChipInputFor]="selectedSourcesList" 
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)" readonly disabled> 
+      </mat-chip-list>
+    </mat-form-field>
+
+</div>

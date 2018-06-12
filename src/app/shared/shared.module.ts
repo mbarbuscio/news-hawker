@@ -9,6 +9,12 @@ import { SettingsComponent } from './settings/settings.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DirectivesModule } from './directives/directives.module';
 import { MatIconModule, MatIcon } from '@angular/material/icon';
+import { SourcesComponent } from './sources/sources.component';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { CategoriesComponent } from './categories/categories.component';
+import {MatRadioModule} from '@angular/material/radio';
+
 
 @NgModule({
   imports: [
@@ -18,9 +24,12 @@ import { MatIconModule, MatIcon } from '@angular/material/icon';
     PipesModule,
     MatIconModule,
     MatTabsModule,
-    DirectivesModule
+    DirectivesModule,
+    MatChipsModule,
+    MatFormFieldModule,
+    MatRadioModule
   ],
-  declarations: [CountrySelectorComponent, NavBarComponent, SettingsComponent],
-  exports: [CountrySelectorComponent, NavBarComponent, MatTabsModule, MatIconModule, SettingsComponent]
+  declarations: [CountrySelectorComponent, NavBarComponent, SettingsComponent, SourcesComponent, CategoriesComponent],
+  exports: [CountrySelectorComponent, NavBarComponent, MatTabsModule, MatIconModule, SettingsComponent, SourcesComponent, CategoriesComponent]
 })
 export class SharedModule { }

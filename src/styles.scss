@@ -111,8 +111,8 @@ ng-select {
     width: 100%;
     display: flex;
     position: relative;
-    top: 60px;
-    height: calc(100vh - 60px);
+    top: 100px;
+    height: calc(100vh - 100px);
     overflow-y: scroll;
     flex-direction: column;
     align-items: center;
@@ -152,6 +152,91 @@ app-news {
     }
 }
 
+app-sources {
+    position: fixed; 
+    top: 120px; 
+    left: 10px; 
+    z-index: 550;
+    width: calc((100% - 480px) / 2 - 20px);
+    display: block;
+    .mat-chip-list-wrapper {
+        width: 85%;
+        max-width: 250px;
+        mat-chip {
+            &.mat-standard-chip {
+                &.mat-primary {
+                    background-color: #c90008;
+                    color: white;
+                    font-weight: bold;
+                    font-size: 11px;
+                    &.selected {
+                        background-color: black;
+                    }
+    
+                    mat-icon.mat-chip-remove {
+                        color: white;
+                    }
+                }
+            }
+    
+            
+            
+            &[hidden] {
+                display: none;
+            }   
+        }
+    }
+
+    mat-form-field {
+        width: 85%;
+        &>.mat-form-field-wrapper {
+            &>.mat-form-field-underline {
+                display: none !important;
+            }
+        }
+    }
+    
+}
+
+app-categories {
+    width: 100%;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    padding: 8px 12px;
+    mat-radio-group.categories {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        &>mat-radio-button {
+            flex: 0 0 auto;
+            margin: 0 8px 0 8px;
+            &.mat-radio-checked {
+                &>.mat-radio-label {
+                    background-color: black;
+                    box-shadow: 0 3px 3px -2px rgba(0,0,0,.2), 0 3px 4px 0 rgba(0,0,0,.14), 0 1px 8px 0 rgba(0,0,0,.12);
+                }
+            }
+            &>.mat-radio-label {
+                transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+                background-color: #c90008;
+                padding: 6px 12px;
+                border-radius: 24px;
+                color: white;
+                font-weight: bold;
+                font-size: 13px;
+                &>.mat-radio-container {                    
+                    display: none;
+                }
+                &>.mat-radio-label-content {
+                    padding-left: 0;
+                }
+            }
+            
+        }
+    }
+}
 
 @media only screen and (min-width: 480px) {
     app-news {
