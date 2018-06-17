@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SecurityContext } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-news',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class NewsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sanitizer: DomSanitizer) { }
 
   @Input()
   article: any;
@@ -23,4 +24,7 @@ export class NewsComponent implements OnInit {
     return url;
   }
 
+  trust(url) {
+    return this.sanitizer.sanitize(SecurityContext.URL, url);
+  }
 }

@@ -1,10 +1,10 @@
 <mat-card class="news-card">
     <mat-card-header>
-        <img mat-card-avatar [src]="'https://besticon-demo.herokuapp.com/icon?url='+article.url+'&size=80'" [alt]="article.source.name" />
+        <img mat-card-avatar [src]="trust('https://besticon-demo.herokuapp.com/icon?url='+article.url+'&size=80')" [alt]="article.source.name" />
         <mat-card-title>{{article.title}}</mat-card-title>
         <mat-card-subtitle>{{article.publishedAt | timeAgo}}</mat-card-subtitle>
     </mat-card-header>
-    <img *ngIf="article.urlToImage" [src]="imgUrl(article.urlToImage)" mat-card-image />
+    <img *ngIf="article.urlToImage" [src]="trust(imgUrl(article.urlToImage))" mat-card-image />
     <mat-card-content *ngIf="article.description">
         <p>
           {{article.description}}

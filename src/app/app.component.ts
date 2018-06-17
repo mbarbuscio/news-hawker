@@ -3,6 +3,7 @@ import { NewsService } from './services/news.service';
 import { Subscription } from 'rxjs';
 import { ConfigService } from './services/config.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -33,4 +34,6 @@ export class AppComponent implements OnDestroy {
     this.countrySub.unsubscribe();
     this.newsSub.unsubscribe();
   }
+
+  
 }
