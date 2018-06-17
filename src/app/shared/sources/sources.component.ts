@@ -21,6 +21,8 @@ export class SourcesComponent implements OnInit {
   constructor(private newService: NewsService, private configService: ConfigService) { 
     newService.getSources().subscribe(res => {
       this.sources = res;
+      this.selectedSources = [];
+      this.refreshSources();
     })
   }
 
