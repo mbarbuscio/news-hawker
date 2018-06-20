@@ -3,26 +3,32 @@
     <ng-template mat-tab-label>
       <mat-icon>language</mat-icon>
     </ng-template>
-    <div class="settings-tab">
-      <app-country-selector></app-country-selector>
-    </div>
+    <ng-template matTabContent>
+      <div class="settings-tab">
+        <app-country-selector></app-country-selector>
+      </div>
+    </ng-template>
   </mat-tab>
   <mat-tab label="Two">
       <ng-template mat-tab-label>
         <mat-icon>tune</mat-icon>
       </ng-template>
+      <ng-template matTabContent>
       <div class="settings-tab">
         <app-categories></app-categories>
       </div>
+    </ng-template>
   </mat-tab>
 
   <mat-tab label="Tree">
     <ng-template mat-tab-label>
       <mat-icon>library_books</mat-icon>
     </ng-template>
-    <div class="settings-tab">
-      <app-sources></app-sources>
-    </div>
+    <ng-template matTabContent>
+      <div class="settings-tab">
+        <app-sources></app-sources>
+      </div>
+    </ng-template>
   </mat-tab>
 
   
@@ -30,9 +36,11 @@
       <ng-template mat-tab-label>
         <mat-icon>settings</mat-icon>
       </ng-template>
-      <div>
-        
-      </div>
+      <ng-template matTabContent>
+        <div>
+          <p>Legal stuff will be here...</p>
+        </div>
+      </ng-template>
   </mat-tab>
 </mat-tab-group>
 
