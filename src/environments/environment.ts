@@ -15,6 +15,10 @@ export const environment = {
   newsApi: {
     apiKey: "ae7efcbff7794e01847d3d0c9b4344de",
     baseUrl: "https://newsapi.org"
+  },
+  ipstack: {
+    baseUrl: "",
+    apiKey: "cc47fbb3c76c1f04dfb8c8044e36a1af"
   }
 };
 

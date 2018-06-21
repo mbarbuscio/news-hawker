@@ -54,7 +54,12 @@ app-nav-bar {
     }
 }
 
-
+.mat-tab-body {
+    display: none !important;
+    &.mat-tab-body-active {
+        display: block !important; 
+    }
+}
 
 ng-select {
     flex: 0 0 auto;
@@ -272,6 +277,7 @@ app-settings {
         top: 60px;
         left: 0;
         right: 0;
+        height: auto;
         mat-radio-group.categories {
             flex-direction: row;
             justify-content: center;

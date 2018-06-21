@@ -32,14 +32,18 @@ export class NewsService implements OnDestroy {
     });
     this.categoriesSub = config.getCategory().subscribe(cat => {
       this.selectedCat = cat;
-      this.refreshSources();
-      this.getTopStories();
+      if(this.country) {
+        this.refreshSources();
+        this.getTopStories();
+      }
     });
     this.sourcesSub = config.getSelectedSources().subscribe(sources => {
       if(sources.length > 0){
         this.getEverything(sources);
       }else{
-        this.getTopStories();
+        if(this.country) {
+          this.getTopStories();
+        }
       }
     })
   }
