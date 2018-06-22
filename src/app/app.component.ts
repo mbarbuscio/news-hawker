@@ -13,9 +13,12 @@ export class AppComponent implements OnDestroy {
 
   constructor(private newsService: NewsService, configService: ConfigService) {
 
+    this.news = [];
+
     this.countrySub = configService.getCountry().subscribe( (c) => {
       this.newsSub = newsService.getNews().subscribe( (n) => {
-        this.news = n;
+        this.news = this.news.concat(n);
+        
       });
     });
 
