@@ -244,6 +244,38 @@ app-settings {
     
 }
 
+app-side-bar {
+    position: fixed;
+    top: 60px;
+    left:0;
+    bottom: 48px;
+    width: 100vw;
+    height: calc(100vh - 108px);
+    max-height: calc(100vh - 108px);
+    background: white;
+    font-family: 'Montserrat', sans-serif;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    transition: left 0.25s ease-out;
+    & a {
+        cursor: pointer;
+    }
+    &.hidden {
+        left: 100%;
+    }
+    &>* {
+        width: 100%;
+        text-align: center;
+    }
+    &>h1,h2,h3 {
+        text-transform: uppercase;
+        padding: 5px 10px;
+    }
+    &>p{
+        padding: 5px 10px;
+    }
+}
+
 .add-to-home {
     &.modal {
         visibility: hidden;
@@ -331,11 +363,8 @@ button {
     }
 }
 
-
 @media only screen and (min-width: 600px) {
-    .news-container {
-        top: 100px;
-    }
+    
     app-nav-bar {
     
         &>.nav-section {
@@ -345,8 +374,37 @@ button {
             }
             &.right {
                 display: inline-flex;
+                &> *{
+                    flex: 0 0 auto;
+                    margin-right: 10px;
+                }
+                &>a{
+                    cursor: pointer;
+                }
             }
         }
+    }
+
+}
+
+@media only screen and (min-width: 768px) {
+    
+    app-side-bar {
+        width: 340px;
+        left: calc(100% - 340px);
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+
+    app-side-bar {
+        height: calc(100vh - 60px);
+        max-height: calc(100vh - 60px);
+        bottom: 0;
+    }
+
+    .news-container {
+        top: 100px;
     }
 
     app-categories {
@@ -411,4 +469,5 @@ button {
             }
         }
     }
+
 }

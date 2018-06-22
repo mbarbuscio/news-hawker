@@ -1,4 +1,5 @@
 import { Component, OnInit, HostBinding, HostListener, ElementRef } from '@angular/core';
+import { ConfigService } from '../../services/config.service';
 
 @Component({
   selector: 'app-settings',
@@ -24,9 +25,14 @@ export class SettingsComponent implements OnInit {
     }
   }
 
-  constructor(private _elementRef : ElementRef) { }
+  constructor(private _elementRef : ElementRef, private configService: ConfigService) { }
 
   ngOnInit() {
   }
 
+  showPrivacy(event) {
+    event.stopImmediatePropagation();
+    this.isShown = false;
+    this.configService.showPrivacy();
+  }
 }

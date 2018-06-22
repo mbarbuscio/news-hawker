@@ -14,12 +14,14 @@ export class ConfigService {
   mobileView: ReplaySubject<boolean>;
   category: ReplaySubject<string>;
   sources: ReplaySubject<any[]>;
+  showSideBar: ReplaySubject<boolean>;
 
   constructor(db: AngularFirestore, http: HttpClient) { 
     this.country = new ReplaySubject<Country>();
     this.mobileView = new ReplaySubject<boolean>();
     this.category = new ReplaySubject<string>();
     this.sources = new ReplaySubject<any[]>();
+    this.showSideBar = new ReplaySubject<boolean>();
     this.category.next("general");
     http.get<any>('https://extreme-ip-lookup.com/json/').subscribe(res => {
       db.collection<Country>('countries', ref => ref.where('flagCd', '==', res.countryCode)).valueChanges().subscribe(qry => {
@@ -32,12 +34,12 @@ export class ConfigService {
     })
 
     
-    this.mobileView.next(window.innerWidth <= 768);
+    this.mobileView.next(window.innerWidth < 1024);
     this.sources.next([]);
 
     fromEvent(window, 'resize')
       .subscribe((event) => {
-        this.mobileView.next(window.innerWidth <= 768);
+        this.mobileView.next(window.innerWidth < 1024);
       });
   }
  
@@ -67,6 +69,10 @@ export class ConfigService {
 
   isMobile() :Observable<boolean> {
     return this.mobileView;
+  }
+
+  showPrivacy() {
+    this.showSideBar.next(true);
   }
 
 }

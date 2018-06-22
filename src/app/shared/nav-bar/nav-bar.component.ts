@@ -25,4 +25,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
     this.mobileViewSub.unsubscribe();
   }
 
+  showPrivacy() {
+    this.configService.showPrivacy();
+  }
 }
