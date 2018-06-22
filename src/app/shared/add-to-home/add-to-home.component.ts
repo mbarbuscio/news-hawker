@@ -8,16 +8,15 @@ import { Observable } from 'rxjs';
 })
 export class AddToHomeComponent implements OnInit {
 
-  show: boolean = true;
+  show: boolean = false;
 
   constructor() { 
     setTimeout(() => {
       if (!window.matchMedia('(display-mode:standalone)').matches) {
         var ua = window.navigator.userAgent;
-
-        var env = /(IPhone|IPad).(Safari)/.exec(ua);
-        if(env[1] && env[2]){
-          var os = /OS (\d).(\d*)/.exec(ua);
+        var env = ua.match(/(iPhone|iPad).*(Safari)/);
+        if(env && env[1] && env[2]){
+          var os = ua.match(/OS (\d*)_(\d*)/);
           if(Number(os[1]) >= 11 && Number(os[2]) >= 3) {
             this.show = true;
           }
