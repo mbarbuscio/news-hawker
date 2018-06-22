@@ -14,6 +14,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { CategoriesComponent } from './categories/categories.component';
 import {MatRadioModule} from '@angular/material/radio';
+import { AddToHomeComponent } from './add-to-home/add-to-home.component';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import {MatRadioModule} from '@angular/material/radio';
     MatFormFieldModule,
     MatRadioModule
   ],
-  declarations: [CountrySelectorComponent, NavBarComponent, SettingsComponent, SourcesComponent, CategoriesComponent],
-  exports: [CountrySelectorComponent, NavBarComponent, MatTabsModule, MatIconModule, SettingsComponent, SourcesComponent, CategoriesComponent]
+  declarations: [CountrySelectorComponent, NavBarComponent, SettingsComponent, SourcesComponent, CategoriesComponent, AddToHomeComponent],
+  exports: [CountrySelectorComponent, NavBarComponent, MatTabsModule, MatIconModule, SettingsComponent, SourcesComponent, CategoriesComponent, AddToHomeComponent]
 })
 export class SharedModule { }

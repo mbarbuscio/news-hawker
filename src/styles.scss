@@ -2,7 +2,8 @@
 
 @import "assets/scss/theme";
 @import "~@ng-select/ng-select/themes/default.theme.css";
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Lato:100,400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Bangers');
 
 * {
     box-sizing: border-box;
@@ -241,6 +242,75 @@ app-settings {
         }
     }
     
+}
+
+.add-to-home {
+    &.modal {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        top: 70px;
+        left: 10px;
+        right: 10px;
+        height: 170px;
+        transition: opacity 0.5s ease-out;
+        &.show {
+            visibility: visible;
+            opacity: 1;
+        }
+        &>.bg {
+            background: rgba(0,0,0,.8);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+        &>.content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            padding: 20px;
+            &>span {
+                font-family: 'Bangers', sans-serif;
+                text-transform: uppercase;
+                color: white;
+                font-size: 28px;
+            }
+            &>p {
+                color: white;
+                font-size: 16px;
+                line-height: 22px;
+                margin-top: 8px;
+                margin-bottom: 16px;
+                font-weight: 100;
+                &>img {
+                    max-height: 22px;
+                    display: inline;
+                    margin: 0 4px;
+                }
+            }
+        }
+    }
+}
+
+button {
+    &.flat {
+        border: none;
+        background: #ff0266;
+        padding: 6px 12px;
+        font-size: 16px;
+        color: white;
+        &:focus {
+            outline: none;
+            border-style: none;
+        }
+        &:active {
+            color: black;
+            outline: none;
+            border-style: none;
+            background: white;
+        }
+    }
 }
 
 @media only screen and (min-width: 480px) {
