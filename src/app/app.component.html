@@ -1,11 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-<app-nav-bar></app-nav-bar>
-<div class="news-container">
-    <app-news *ngFor="let article of news" [article]="article"></app-news>
-</div>
 
-<app-settings *ngIf="isMobile" ></app-settings>
-<app-sources *ngIf="!isMobile"></app-sources>
-<app-categories *ngIf="!isMobile"></app-categories>
-<app-add-to-home></app-add-to-home>
+<!-- <div class="touch-events" (swipedown)="swipedown()" (pandown)="swipedown()"> -->
+    <app-nav-bar></app-nav-bar>
+    <div class="news-container">
+        <app-news *ngFor="let article of news" [article]="article"></app-news>
+    </div>
+
+    <app-settings *ngIf="isMobile" ></app-settings>
+    <app-sources *ngIf="!isMobile"></app-sources>
+    <app-categories *ngIf="!isMobile"></app-categories>
+    <app-add-to-home></app-add-to-home>
+<!-- </div> -->

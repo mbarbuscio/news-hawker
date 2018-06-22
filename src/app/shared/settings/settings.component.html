@@ -1,4 +1,4 @@
-<mat-tab-group>
+<mat-tab-group (pandown)="toggle(false)" (swipedown)="toggle(false)">
   <mat-tab label="One">
     <ng-template mat-tab-label>
       <mat-icon>language</mat-icon>
@@ -44,4 +44,4 @@
   </mat-tab>
 </mat-tab-group>
 
-<div class="blocker"></div>
+<div class="blocker" (panup)="toggle(true)" (swipeup)="toggle(true)"></div>

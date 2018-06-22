@@ -1,4 +1,5 @@
 import { Component, OnInit, HostBinding, HostListener, ElementRef } from '@angular/core';
+import { GlobalEventsService } from '../../services/global-events.service';
 
 @Component({
   selector: 'app-settings',
@@ -24,9 +25,18 @@ export class SettingsComponent implements OnInit {
     }
   }
 
-  constructor(private _elementRef : ElementRef) { }
+  constructor(private _elementRef : ElementRef, private events:GlobalEventsService) {
+    this.events.globalSwipeDownEvent().subscribe(evt => {
+      if(this.isShown) {
+        this.isShown = false;
+      }
+    })
+  }
 
   ngOnInit() {
   }
 
+  toggle(direction: boolean) {
+      this.isShown = direction;
+  }
 }

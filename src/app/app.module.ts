@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AngularFireModule } from 'angularfire2';
@@ -11,6 +11,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { ServicesModule } from './services/services.module';
 import { NewsModule } from './news/news.module';
+import 'hammerjs';
+
+declare var Hammer: any;
+
+export class HammerConfig extends HammerGestureConfig {
+  buildHammer(element: HTMLElement) {
+    let mc = new Hammer(element, {touchAction: "pan-y"});
+    return mc;
+  }
+}
 
 @NgModule({
   declarations: [
@@ -27,8 +37,9 @@ import { NewsModule } from './news/news.module';
     ServicesModule,
     NewsModule
   ],
-  providers: [],
+  providers: [{provide: HAMMER_GESTURE_CONFIG, useClass: HammerConfig}],
   bootstrap: [AppComponent],
   exports: [BrowserModule]
 })
 export class AppModule { }
+

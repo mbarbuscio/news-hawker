@@ -1,7 +1,8 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, HostListener } from '@angular/core';
 import { NewsService } from './services/news.service';
 import { Subscription } from 'rxjs';
 import { ConfigService } from './services/config.service';
+import { GlobalEventsService } from './services/global-events.service';
 
 
 @Component({
@@ -11,7 +12,16 @@ import { ConfigService } from './services/config.service';
 })
 export class AppComponent implements OnDestroy {
 
-  constructor(private newsService: NewsService, configService: ConfigService) {
+  @HostListener('pandown') onPanDown() {
+    this.swipedown();
+  }
+
+  @HostListener('swipedown') onSwipeDown() {
+    this.swipedown();
+  }
+  
+  
+  constructor(private newsService: NewsService, configService: ConfigService, private events:GlobalEventsService) {
 
     this.countrySub = configService.getCountry().subscribe( (c) => {
       this.newsSub = newsService.getNews().subscribe( (n) => {
@@ -35,5 +45,7 @@ export class AppComponent implements OnDestroy {
     this.newsSub.unsubscribe();
   }
 
-  
+  swipedown() {
+    this.events.globalSwipeDown(true);
+  }
 }
