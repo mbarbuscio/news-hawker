@@ -1,4 +1,4 @@
-<mat-tab-group>
+<mat-tab-group mat-stretch-tabs>
   <mat-tab label="One">
     <ng-template mat-tab-label>
       <mat-icon>language</mat-icon>
@@ -31,17 +31,6 @@
     </ng-template>
   </mat-tab>
 
-  
-  <mat-tab label="Four">
-      <ng-template mat-tab-label>
-        <mat-icon>settings</mat-icon>
-      </ng-template>
-      <ng-template matTabContent>
-        <div class="settings-tab">
-          <a (click)="showPrivacy($event)">Show Privacy Policy</a>
-        </div>
-      </ng-template>
-  </mat-tab>
 </mat-tab-group>
 
 <div class="blocker"></div>

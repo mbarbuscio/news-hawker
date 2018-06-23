@@ -30,9 +30,4 @@ export class SettingsComponent implements OnInit {
   ngOnInit() {
   }
 
-  showPrivacy(event) {
-    event.stopImmediatePropagation();
-    this.isShown = false;
-    this.configService.showPrivacy();
-  }
 }
