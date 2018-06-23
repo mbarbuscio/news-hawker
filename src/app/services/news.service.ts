@@ -31,22 +31,26 @@ export class NewsService implements OnDestroy {
     this.countrySub = config.getCountry().subscribe( (c) => {
       this.country = c;
       this.refreshSources();
+      document.getElementById("scrolltop").scrollIntoView();
       this.getTopStories();
     });
     this.categoriesSub = config.getCategory().subscribe(cat => {
       this.selectedCat = cat;
       if(this.country) {
         this.refreshSources();
+        document.getElementById("scrolltop").scrollIntoView();
         this.getTopStories();
       }
     });
     this.sourcesSub = config.getSelectedSources().subscribe(sources => {
       this.selectedSources = sources;
       if(sources.length > 0){
+        document.getElementById("scrolltop").scrollIntoView();
         this.page = 1;
         this.getEverything(sources);
       }else{
         if(this.country) {
+          document.getElementById("scrolltop").scrollIntoView();
           this.getTopStories();
         }
       }

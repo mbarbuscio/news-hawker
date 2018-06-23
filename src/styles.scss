@@ -32,7 +32,6 @@ app-nav-bar {
     z-index: 500;
 
     &>.nav-section {
-        width: 100%;
         height: 100%;
         padding: 0;
         display: flex;
@@ -41,7 +40,8 @@ app-nav-bar {
         flex: 0 0 auto;
         padding: 10px 20px;
         &.left {
-            justify-content: center;
+            justify-content: flex-start;
+            width: 65%;
             .brand {
                 flex: 0 0 auto;
                 height: 50px;
@@ -49,8 +49,16 @@ app-nav-bar {
             }
         }
         &.right {
-            display: none;
+            width: 35%;
+            display: inline-flex;
             justify-content: flex-end;
+            &> *{
+                flex: 0 0 auto;
+                margin-right: 10px;
+            }
+            &>a{
+                cursor: pointer;
+            }
         }
     }
 }
@@ -254,26 +262,40 @@ app-side-bar {
     max-height: calc(100vh - 108px);
     background: white;
     font-family: 'Montserrat', sans-serif;
-    overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     transition: left 0.25s ease-out;
+    mat-tab-group {
+        height: 100%;
+    }
+    & .sidebar-tab {
+        overflow-y: auto;
+        padding: 5px;
+        height: 100%;
+        &>* {
+            width: 100%;
+            text-align: center;
+        }
+        &>h1,h2,h3 {
+            text-transform: uppercase;
+            padding: 5px 10px;
+            margin: 5px 0;
+        }
+        &>h4 {
+            text-transform: uppercase;
+            padding: 5px 10px;
+            margin: 0;
+        }
+        &>p{
+            padding: 5px 10px;
+        }
+    }
     & a {
         cursor: pointer;
     }
     &.hidden {
         left: 100%;
     }
-    &>* {
-        width: 100%;
-        text-align: center;
-    }
-    &>h1,h2,h3 {
-        text-transform: uppercase;
-        padding: 5px 10px;
-    }
-    &>p{
-        padding: 5px 10px;
-    }
+    
 }
 
 .add-to-home {
@@ -368,19 +390,12 @@ button {
     app-nav-bar {
     
         &>.nav-section {
-            width: 50%;
             &.left {
-                justify-content: flex-start;
+                width: 50%;
             }
             &.right {
-                display: inline-flex;
-                &> *{
-                    flex: 0 0 auto;
-                    margin-right: 10px;
-                }
-                &>a{
-                    cursor: pointer;
-                }
+                width: 50%;
+                
             }
         }
     }

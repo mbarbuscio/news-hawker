@@ -15,6 +15,7 @@ export class ConfigService {
   category: ReplaySubject<string>;
   sources: ReplaySubject<any[]>;
   showSideBar: ReplaySubject<boolean>;
+  sideBarShown: boolean = false;
 
   constructor(db: AngularFirestore, http: HttpClient) { 
     this.country = new ReplaySubject<Country>();
@@ -71,8 +72,9 @@ export class ConfigService {
     return this.mobileView;
   }
 
-  showPrivacy() {
-    this.showSideBar.next(true);
+  toggleSideBar() {
+    this.sideBarShown = !this.sideBarShown;
+    this.showSideBar.next(this.sideBarShown);
   }
 
 }

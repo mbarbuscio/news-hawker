@@ -20,7 +20,7 @@ export class SideBarComponent implements OnInit {
   }
 
   hide() {
-    this.isHidden = true;
+    this.configService.toggleSideBar();
   }
 
 }
