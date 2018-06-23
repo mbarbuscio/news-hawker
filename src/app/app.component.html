@@ -1,7 +1,11 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
 <app-nav-bar></app-nav-bar>
-<div class="news-container">
+<div class="news-container" infiniteScroll
+[infiniteScrollDistance]="2"
+[infiniteScrollThrottle]="50"
+(scrolled)="getMoreNews()"
+[scrollWindow]="false">
     <app-news *ngFor="let article of news" [article]="article"></app-news>
 </div>
 

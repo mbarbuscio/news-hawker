@@ -17,7 +17,7 @@ export class AppComponent implements OnDestroy {
 
     this.countrySub = configService.getCountry().subscribe( (c) => {
       this.newsSub = newsService.getNews().subscribe( (n) => {
-        this.news = this.news.concat(n);
+        this.news = n;
         
       });
     });
@@ -38,5 +38,8 @@ export class AppComponent implements OnDestroy {
     this.newsSub.unsubscribe();
   }
 
+  getMoreNews() {
+    this.newsService.getMore();
+  }
   
 }

@@ -20,6 +20,9 @@ export class NewsService implements OnDestroy {
   news: ReplaySubject<any[]>;
   sources: ReplaySubject<any[]>;
   selectedCat: string;
+  page: number = 1;
+  selectedSources: any[] = [];
+  articles: any[] = [];
 
   constructor(config: ConfigService, private http: HttpClient) {
     this.news = new ReplaySubject<any>();
@@ -38,7 +41,9 @@ export class NewsService implements OnDestroy {
       }
     });
     this.sourcesSub = config.getSelectedSources().subscribe(sources => {
+      this.selectedSources = sources;
       if(sources.length > 0){
+        this.page = 1;
         this.getEverything(sources);
       }else{
         if(this.country) {
@@ -55,7 +60,8 @@ export class NewsService implements OnDestroy {
   getTopStories() {
     var reqUrl = `${this.baseUrl}/v2/top-headlines?country=${this.country.countryCd}&category=${this.selectedCat || 'general'}&apiKey=${environment.newsApi.apiKey}`;
     this.http.get<any>(reqUrl).subscribe((res) => {
-      this.news.next(res.articles);
+      this.articles = res.articles;
+      this.news.next(this.articles);
     });
   }
 
@@ -68,10 +74,22 @@ export class NewsService implements OnDestroy {
 
   getEverything(sources:any[]) {
     var ids = sources.map(a => a.id);
-    var reqUrl = `${this.baseUrl}/v2/everything?sources=${ids.join(",")}&apiKey=${environment.newsApi.apiKey}`; 
+    var reqUrl = `${this.baseUrl}/v2/everything?sources=${ids.join(",")}&pageSize=100&page${this.page}&apiKey=${environment.newsApi.apiKey}`; 
     this.http.get<any>(reqUrl).subscribe(res => {
-      this.news.next(res.articles);
+      if(this.page > 1) {
+        this.articles = this.articles.concat(res.articles)
+      }else{
+        this.articles = res.articles;
+      }
+      this.news.next(this.articles);
     });
+  }
+
+  getMore() {
+    if(this.selectedSources.length > 0) {
+      this.page++;
+      this.getEverything(this.selectedSources);
+    }
   }
 
   getSources(): Observable<any> {
