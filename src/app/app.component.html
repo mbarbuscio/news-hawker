@@ -1,17 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-
 <app-nav-bar></app-nav-bar>
-<div class="news-container" [class.dark]="isDarkTheme" infiniteScroll
-[infiniteScrollDistance]="2"
-[infiniteScrollThrottle]="50"
-(scrolled)="getMoreNews()"
-[scrollWindow]="false">
-    <div id="scrolltop" style="width: 100%; height: 1px; margin: 0;"></div>
-    <app-news *ngFor="let article of news" [article]="article"></app-news>
-</div>
-
-<app-settings *ngIf="isMobile" ></app-settings>
-<app-sources *ngIf="!isMobile"></app-sources>
-<app-categories *ngIf="!isMobile"></app-categories>
+<router-outlet></router-outlet>
 <app-side-bar></app-side-bar>
 <app-add-to-home></app-add-to-home>

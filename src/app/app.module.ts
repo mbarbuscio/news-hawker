@@ -14,10 +14,12 @@ import { NewsModule } from './news/news.module';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AuthModule } from './auth/auth.module';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
