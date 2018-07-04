@@ -21,7 +21,7 @@ export class ConfigService {
   darkTheme: boolean = false;
   isDarkTheme: ReplaySubject<boolean>;
   userEmail: string;
-  userRecord:any;
+  userRecord:any = null;
 
   constructor(private db: AngularFirestore, http: HttpClient) { 
     this.country = new ReplaySubject<Country>();
@@ -134,11 +134,11 @@ export class ConfigService {
   }
 
   saveUserSettings() {
-
-    this.db.doc(`userSettings/${this.userRecord.id}`).update({
-      darkTheme: this.darkTheme,
-      countryCd: this.selectedCountry.countryCd         
-    });
-
+    if(this.userRecord) {
+      this.db.doc(`userSettings/${this.userRecord.id}`).update({
+        darkTheme: this.darkTheme,
+        countryCd: this.selectedCountry.countryCd         
+      });
+    }    
   }
 }
