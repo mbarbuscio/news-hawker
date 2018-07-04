@@ -8,7 +8,13 @@ import { ConfigService } from '../../services/config.service';
 })
 export class SettingsComponent implements OnInit {
 
+  isDarkTheme: boolean = false;
+  
   @HostBinding('class.shown') isShown:boolean = false;
+
+  @HostBinding('class.dark') get isDark():boolean {
+    return this.isDarkTheme;
+  }
 
   @HostListener('click') onClick() {
     if(!this.isShown) {
@@ -25,7 +31,11 @@ export class SettingsComponent implements OnInit {
     }
   }
 
-  constructor(private _elementRef : ElementRef, private configService: ConfigService) { }
+  constructor(private _elementRef : ElementRef, private configService: ConfigService) { 
+    configService.theme().subscribe(isDark => {
+      this.isDarkTheme = isDark;
+    });
+  }
 
   ngOnInit() {
   }

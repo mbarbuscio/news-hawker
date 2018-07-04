@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, HostListener } from '@angular/core';
 import { ConfigService } from '../../services/config.service';
 import { AuthService } from '../../services/auth.service';
 
@@ -10,6 +10,15 @@ import { AuthService } from '../../services/auth.service';
 export class SideBarComponent implements OnInit {
 
   @HostBinding('class.hidden') isHidden: boolean = true;
+
+  // @HostListener('document:click', ['$event.target']) onClickOutside(targetElement) {
+  //   const clickedInside = this._elementRef.nativeElement.contains(targetElement);
+  //   if (!clickedInside) {
+  //     if(this.isShown) {
+  //       this.isShown = false;
+  //     }
+  //   }
+  // }
 
   loggedIn: boolean = false;
 

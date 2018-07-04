@@ -323,6 +323,10 @@ app-categories {
     }
 }
 
+.mat-tab-group.mat-primary .mat-ink-bar {
+    background: $main-gradient;
+}
+
 app-settings {
     position: fixed;
     left: 0;
@@ -335,6 +339,9 @@ app-settings {
     z-index: 500;
     
     box-shadow: 0 -1px 3px rgba(0,0,0,0.12), 0 -1px 2px rgba(0,0,0,0.24);
+    &.dark {
+        background: #37474F;
+    }
     &>mat-tab-group {
         position: absolute;
         width: 100%;
@@ -342,7 +349,16 @@ app-settings {
         .mat-tab-list {
             .mat-tab-label {
                 flex-grow: 1;
+                font-size: 18px;
+                color: #fc6767;
+                font-weight: bold;
+                letter-spacing: 2px;
+
+                i {
+                    margin-right: 6px;
+                }
             }
+            
         }
         .mat-tab-body-wrapper {
             height: 100%;
