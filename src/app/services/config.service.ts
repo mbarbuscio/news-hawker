@@ -16,6 +16,8 @@ export class ConfigService {
   sources: ReplaySubject<any[]>;
   showSideBar: ReplaySubject<boolean>;
   sideBarShown: boolean = false;
+  darkTheme: boolean = false;
+  isDarkTheme: ReplaySubject<boolean>;
 
   constructor(db: AngularFirestore, http: HttpClient) { 
     this.country = new ReplaySubject<Country>();
@@ -23,6 +25,8 @@ export class ConfigService {
     this.category = new ReplaySubject<string>();
     this.sources = new ReplaySubject<any[]>();
     this.showSideBar = new ReplaySubject<boolean>();
+    this.isDarkTheme = new ReplaySubject<boolean>();
+
     this.category.next("general");
     http.get<any>('https://extreme-ip-lookup.com/json/').subscribe(res => {
       db.collection<Country>('countries', ref => ref.where('flagCd', '==', res.countryCode)).valueChanges().subscribe(qry => {
@@ -77,4 +81,13 @@ export class ConfigService {
     this.showSideBar.next(this.sideBarShown);
   }
 
+  toggleTheme() {
+    this.darkTheme = !this.darkTheme;
+    console.log(this.darkTheme);
+    this.isDarkTheme.next(this.darkTheme);
+  }
+
+  theme() {
+    return this.isDarkTheme;
+  }
 }

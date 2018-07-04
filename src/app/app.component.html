@@ -1,7 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
 <app-nav-bar></app-nav-bar>
-<div class="news-container" infiniteScroll
+<div class="news-container" [class.dark]="isDarkTheme" infiniteScroll
 [infiniteScrollDistance]="2"
 [infiniteScrollThrottle]="50"
 (scrolled)="getMoreNews()"

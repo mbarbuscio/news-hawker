@@ -16,6 +16,8 @@ import { CategoriesComponent } from './categories/categories.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { AddToHomeComponent } from './add-to-home/add-to-home.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { ThemeSelectorComponent } from './theme-selector/theme-selector.component';
 
 
 @NgModule({
@@ -29,9 +31,10 @@ import { SideBarComponent } from './side-bar/side-bar.component';
     DirectivesModule,
     MatChipsModule,
     MatFormFieldModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSlideToggleModule
   ],
-  declarations: [CountrySelectorComponent, NavBarComponent, SettingsComponent, SourcesComponent, CategoriesComponent, AddToHomeComponent, SideBarComponent],
+  declarations: [CountrySelectorComponent, NavBarComponent, SettingsComponent, SourcesComponent, CategoriesComponent, AddToHomeComponent, SideBarComponent, ThemeSelectorComponent],
   exports: [CountrySelectorComponent, NavBarComponent, MatTabsModule, MatIconModule, SettingsComponent, SourcesComponent, CategoriesComponent, AddToHomeComponent, SideBarComponent]
 })
 export class SharedModule { }

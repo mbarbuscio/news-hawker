@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, SecurityContext, HostBinding } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ConfigService } from '../../services/config.service';
 
 @Component({
   selector: 'app-news',
@@ -8,10 +9,20 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class NewsComponent implements OnInit {
 
-  constructor(private sanitizer: DomSanitizer) { }
+  isDarkTheme: boolean = false;
+
+  constructor(private sanitizer: DomSanitizer, private configService: ConfigService) { 
+    configService.theme().subscribe(isDark => {
+      this.isDarkTheme = isDark;
+    });
+  }
 
   @Input()
   article: any;
+
+  @HostBinding('class.dark') get isDark():boolean {
+    return this.isDarkTheme;
+  }
 
   @HostBinding('class.nodesc') get noDesc():boolean {
     if(this.article) {

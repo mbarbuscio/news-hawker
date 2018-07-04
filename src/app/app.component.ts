@@ -11,15 +11,21 @@ import { ConfigService } from './services/config.service';
 })
 export class AppComponent implements OnDestroy {
 
+  isDarkTheme: boolean = false;
+
   constructor(private newsService: NewsService, configService: ConfigService) {
 
-    this.news = [];
+    this.news = [];  
 
     this.countrySub = configService.getCountry().subscribe( (c) => {
       this.newsSub = newsService.getNews().subscribe( (n) => {
         this.news = n;
         
       });
+    });
+
+    configService.theme().subscribe(isDark => {
+      this.isDarkTheme = isDark;
     });
 
     this.mobileViewSub = configService.isMobile().subscribe(isMobile => {
