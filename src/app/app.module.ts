@@ -12,6 +12,8 @@ import { SharedModule } from './shared/shared.module';
 import { ServicesModule } from './services/services.module';
 import { NewsModule } from './news/news.module';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { AuthModule } from './auth/auth.module';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 @NgModule({
   declarations: [
@@ -24,10 +26,12 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireAuthModule,
     SharedModule,
     ServicesModule,
     NewsModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent],

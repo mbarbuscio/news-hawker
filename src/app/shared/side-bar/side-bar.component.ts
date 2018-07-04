@@ -1,5 +1,6 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { ConfigService } from '../../services/config.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -10,10 +11,16 @@ export class SideBarComponent implements OnInit {
 
   @HostBinding('class.hidden') isHidden: boolean = true;
 
-  constructor(private configService: ConfigService) {
+  loggedIn: boolean = false;
+
+  constructor(private configService: ConfigService, private authService: AuthService) {
     configService.showSideBar.subscribe(sub => {
       this.isHidden = !sub;
     });
+
+    authService.loggedIn.subscribe(isLoggedIn => {
+      this.loggedIn = isLoggedIn;
+    })
   }
 
   ngOnInit() {

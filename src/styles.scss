@@ -557,6 +557,97 @@ button {
     }
 }
 
+app-login {
+    padding: 10px;
+    &>span {
+        text-align: center;
+        color: white;
+        font-size: 18px;
+        display: block;
+        width: 100%;
+        padding: 5px;
+    }
+    &>.buttons {
+        padding: 10px 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        &>* {
+            flex: 0 0 auto;
+            margin: 5px auto;
+        }
+
+        &>button {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            border: none;
+            padding: 10px 20px;
+            font-size: 13px;
+            color: white;
+            border-radius: 2px;
+            &>i {
+                font-size: 15px;
+                margin-right: 6px;
+            }
+            &.fb{
+                background: #3b5998;
+            }
+            &.google {
+                background: white;
+                color: #d62d20;
+            }
+        }
+        
+    }
+}
+
+app-profile {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    &>* {
+        flex: 0 0 auto;
+    }
+    &>.user {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        &>* {
+            flex: 0 0 auto;
+            margin: 8px auto;
+        }
+        &>img {
+            border: 2px solid white;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        &>span {
+            color: white;
+            font-size: 18px;
+        }
+    }
+
+    &>button.signOut {  
+        margin-top: 10px;
+        padding: 10px 20px;
+        border-radius: 2px;
+        font-size: 13px;
+        background: transparent;
+        font-weight: 500;
+        border: 1px solid white;
+        color: white;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    }
+}
+
 
 .mat-slide-toggle-content {
     color: white;

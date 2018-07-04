@@ -18,6 +18,8 @@ import { AddToHomeComponent } from './add-to-home/add-to-home.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { ThemeSelectorComponent } from './theme-selector/theme-selector.component';
+import { AuthModule } from '../auth/auth.module';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -32,9 +34,10 @@ import { ThemeSelectorComponent } from './theme-selector/theme-selector.componen
     MatChipsModule,
     MatFormFieldModule,
     MatRadioModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    AuthModule
   ],
-  declarations: [CountrySelectorComponent, NavBarComponent, SettingsComponent, SourcesComponent, CategoriesComponent, AddToHomeComponent, SideBarComponent, ThemeSelectorComponent],
+  declarations: [CountrySelectorComponent, NavBarComponent, SettingsComponent, SourcesComponent, CategoriesComponent, AddToHomeComponent, SideBarComponent, ThemeSelectorComponent, ProfileComponent],
   exports: [CountrySelectorComponent, NavBarComponent, MatTabsModule, MatIconModule, SettingsComponent, SourcesComponent, CategoriesComponent, AddToHomeComponent, SideBarComponent]
 })
 export class SharedModule { }
