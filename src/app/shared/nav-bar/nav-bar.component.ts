@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { ConfigService } from '../../services/config.service';
 import { Subscription } from 'rxjs';
 
@@ -19,6 +19,10 @@ export class NavBarComponent implements OnInit, OnDestroy {
   isMobile: boolean;
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    document.querySelector('div.ng-input>input').setAttribute('disabled','true');
   }
 
   ngOnDestroy() {
