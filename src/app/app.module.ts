@@ -15,6 +15,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AuthModule } from './auth/auth.module';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { HomeComponent } from './home/home.component';
+import { LegalModule } from './legal/legal.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { HomeComponent } from './home/home.component';
     ServicesModule,
     NewsModule,
     InfiniteScrollModule,
-    AuthModule
+    AuthModule,
+    LegalModule
   ],
   providers: [],
   bootstrap: [AppComponent],

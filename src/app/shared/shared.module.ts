@@ -20,6 +20,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { ThemeSelectorComponent } from './theme-selector/theme-selector.component';
 import { AuthModule } from '../auth/auth.module';
 import { ProfileComponent } from './profile/profile.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -35,9 +36,10 @@ import { ProfileComponent } from './profile/profile.component';
     MatFormFieldModule,
     MatRadioModule,
     MatSlideToggleModule,
-    AuthModule
+    AuthModule,
+    RouterModule
   ],
   declarations: [CountrySelectorComponent, NavBarComponent, SettingsComponent, SourcesComponent, CategoriesComponent, AddToHomeComponent, SideBarComponent, ThemeSelectorComponent, ProfileComponent],
-  exports: [CountrySelectorComponent, NavBarComponent, MatTabsModule, MatIconModule, SettingsComponent, SourcesComponent, CategoriesComponent, AddToHomeComponent, SideBarComponent]
+  exports: [CountrySelectorComponent, NavBarComponent, RouterModule, MatTabsModule, MatIconModule, SettingsComponent, SourcesComponent, CategoriesComponent, AddToHomeComponent, SideBarComponent]
 })
 export class SharedModule { }
