@@ -6,8 +6,9 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700');
 @import url('https://fonts.googleapis.com/css?family=Bangers');
 
-
-$main-gradient: linear-gradient(to right, #ec008c, #fc6767);
+$primary: #f2709c;
+$secondary: #ff9472;
+$main-gradient: linear-gradient(to right, #f2709c, #ff9472);
 $alt-gradient: linear-gradient(to right, #43C6AC, #191654);
 
 @mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: white){
@@ -350,7 +351,7 @@ app-settings {
             .mat-tab-label {
                 flex-grow: 1;
                 font-size: 18px;
-                color: #fc6767;
+                color: $secondary;
                 font-weight: bold;
                 letter-spacing: 2px;
 
@@ -531,7 +532,7 @@ app-theme-selector {
 button {
     &.flat {
         border: none;
-        background: #ff0266;
+        background: $primary;
         padding: 6px 12px;
         font-size: 16px;
         color: white;
@@ -551,7 +552,7 @@ button {
 .settings-title {
     display: none;
     margin-bottom: 10px;
-    color: #ec008c;
+    color: $primary;
     font-size: 24px;
     letter-spacing: 1px;
     &.white {
@@ -676,12 +677,12 @@ app-privacy {
     &>p {
         color: #37474F;
         &>a{
-            color: #fc6767;
+            color: $secondary;
             text-decoration: none;
         }
     }
     &>h2 {
-        color: #ff0266;
+        color: $primary;
         font-size: 32px;
         font-weight: bold;
         display: block;
@@ -714,7 +715,7 @@ app-privacy {
     &.dark {
         color: white;
         &>h4 {
-            color: #fc6767;
+            color: $secondary;
             // &::after{
             //     background: #fc6767;
             // }

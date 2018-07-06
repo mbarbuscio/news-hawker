@@ -31,7 +31,7 @@ export class WeatherService {
       console.log(coords);
       this.getCurrentWeather(coords);
       this.getForecast(coords);
-    })
+    });
   }
 
   private getCurrentWeather(coords: LatLong) {
