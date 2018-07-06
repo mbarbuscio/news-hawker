@@ -21,6 +21,7 @@ import { ThemeSelectorComponent } from './theme-selector/theme-selector.componen
 import { AuthModule } from '../auth/auth.module';
 import { ProfileComponent } from './profile/profile.component';
 import { RouterModule } from '@angular/router';
+import { WeatherModule } from '../weather/weather.module';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { RouterModule } from '@angular/router';
     MatRadioModule,
     MatSlideToggleModule,
     AuthModule,
-    RouterModule
+    RouterModule,
+    WeatherModule
   ],
   declarations: [CountrySelectorComponent, NavBarComponent, SettingsComponent, SourcesComponent, CategoriesComponent, AddToHomeComponent, SideBarComponent, ThemeSelectorComponent, ProfileComponent],
   exports: [CountrySelectorComponent, NavBarComponent, RouterModule, MatTabsModule, MatIconModule, SettingsComponent, SourcesComponent, CategoriesComponent, AddToHomeComponent, SideBarComponent]

@@ -1,6 +1,7 @@
 import { Component, OnInit, HostBinding, HostListener, ElementRef } from '@angular/core';
 import { ConfigService } from '../../services/config.service';
 import { AuthService } from '../../services/auth.service';
+import { WeatherService } from '../../services/weather.service';
 
 @Component({
   selector: 'app-side-bar',

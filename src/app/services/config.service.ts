@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { ServicesModule } from './services.module';
 import { Country } from '../models/country';
+import { LatLong } from '../models/coordinates';
 import { ReplaySubject, Observable, BehaviorSubject, fromEvent } from 'rxjs';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { HttpClient } from '@angular/common/http';
@@ -22,6 +23,8 @@ export class ConfigService {
   isDarkTheme: ReplaySubject<boolean>;
   userEmail: string;
   userRecord:any = null;
+  coords: LatLong;
+  coordinates: ReplaySubject<LatLong>;
 
   constructor(private db: AngularFirestore, http: HttpClient) { 
     this.country = new ReplaySubject<Country>();
@@ -30,22 +33,26 @@ export class ConfigService {
     this.sources = new ReplaySubject<any[]>();
     this.showSideBar = new ReplaySubject<boolean>();
     this.isDarkTheme = new ReplaySubject<boolean>();
+    this.coordinates = new ReplaySubject<LatLong>();
     
-
-    this.category.next("general");
-    http.get<any>('https://extreme-ip-lookup.com/json/').subscribe(res => {
-      db.collection<Country>('countries', ref => ref.where('flagCd', '==', res.countryCode)).valueChanges().subscribe(qry => {
-        if(qry.length > 0) {
-          this.selectedCountry = qry[0];
-          this.country.next(qry[0])
-        }else{
-          this.selectedCountry = { countryCd: "ar", countryNm: "Argentina", flagCd: "AR" };
-          this.country.next({ countryCd: "ar", countryNm: "Argentina", flagCd: "AR" });
-        }
+    if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.coords = new LatLong(position.coords.latitude.toString(), position.coords.longitude.toString());
+        this.coordinates.next(this.coords);
+      }, reject => {
+        http.get<any>('https://extreme-ip-lookup.com/json/').subscribe(res => {
+          this.coords = new LatLong(res.lat, res.lon);  
+          this.coordinates.next(this.coords);
+        });
       });
-    })
-
+    } else {
+      http.get<any>('https://extreme-ip-lookup.com/json/').subscribe(res => {
+        this.coords = new LatLong(res.lat, res.lon);  
+        this.coordinates.next(this.coords);
+      });
+    }
     
+    this.category.next("general");
     this.mobileView.next(window.innerWidth < 1024);
     this.sources.next([]);
 
@@ -54,7 +61,21 @@ export class ConfigService {
         this.mobileView.next(window.innerWidth < 1024);
       });
   }
- 
+
+  setCountryFromLocation(countryCd: string) {
+    if(!this.userRecord) {
+      this.db.collection<Country>('countries', ref => ref.where('flagCd', '==', countryCd)).valueChanges().subscribe(qry => {
+        if(qry.length > 0) {
+          this.selectedCountry = qry[0];
+          this.country.next(qry[0])
+        }else{
+          this.selectedCountry = { countryCd: "ar", countryNm: "Argentina", flagCd: "AR" };
+          this.country.next({ countryCd: "ar", countryNm: "Argentina", flagCd: "AR" });
+        }
+      });
+    }
+  }
+
   setCountry(_country:Country) {
     this.selectedCountry = _country;
     this.country.next(_country);

@@ -1,0 +1,54 @@
+<div class="today" *ngIf="Weather"> 
+  <span>Today in {{Weather.city}}, {{Weather.countryCd}}</span>  
+  <span class="type">{{Weather.type}}</span>
+  <div class="temp">
+    <span>{{Weather.currentTemp | number: '1.0-1'}}</span>
+    <img src=".\assets\weather\celsius.svg" >
+  </div>
+  <div class="values">
+    <span>MIN {{Weather.minTemp}}</span>
+    <span>MAX {{Weather.maxTemp}}</span>
+  </div>
+  <div class="more">
+    <div>
+      <img src=".\assets\weather\wind.svg">
+      <span>WIND</span>
+      <span>{{Weather.windSpeed * 3.6 | number: '1.0-0'}} kmh {{windDirection(Weather.windDirection)}}</span>
+    </div>
+
+    <div>
+        <img src=".\assets\weather\humidity.svg">
+        <span>HUMIDITY</span>
+        <span>{{Weather.humidity}} %</span>
+    </div>
+      
+    <div>
+        <img src=".\assets\weather\pressure.svg">
+        <span>PRESSURE</span>
+        <span>{{Weather.pressure}} hpa</span>
+    </div>
+  </div>
+</div>
+
+<div class="forecast" *ngIf="Forecast">
+  <span>FIVE DAY FORECAST</span>
+  <div *ngFor="let day of Forecast">
+    <div class="day">
+      <span>{{day.Day | number: '2.0-0'}}</span>
+      <span>{{day.Month}}</span>
+    </div>
+    <div class="weather">
+      <img [src]="weatherIcon(day.WeatherList[0].type)"> 
+
+      <div>
+        <span>{{day.WeatherList[0].minTemp | number: '1.0-1'}}</span>
+        <span>MIN</span>        
+      </div>
+
+      <div>
+        <span>{{day.WeatherList[0].maxTemp | number: '1.0-1'}}</span>
+        <span>MAX</span>        
+      </div>
+    </div>
+  </div>
+</div>

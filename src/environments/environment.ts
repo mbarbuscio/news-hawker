@@ -16,10 +16,11 @@ export const environment = {
     apiKey: "ae7efcbff7794e01847d3d0c9b4344de",
     baseUrl: "https://newsapi.org"
   },
-  ipstack: {
-    baseUrl: "",
-    apiKey: "cc47fbb3c76c1f04dfb8c8044e36a1af"
+  openWeather: {
+    baseUrl: "https://api.openweathermap.org/data/2.5",
+    apiKey: "f926f2fec4e9336f54060cec03938860"
   }
+
 };
 
 /*

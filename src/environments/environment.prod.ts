@@ -11,5 +11,10 @@ export const environment = {
   newsApi: {
     apiKey: "ae7efcbff7794e01847d3d0c9b4344de",
     baseUrl: "https://newsapi.org"
+  },
+  openWeather: {
+    baseUrl: "https://api.openweathermap.org/data/2.5",
+    apiKey: "f926f2fec4e9336f54060cec03938860"
   }
+
 };
