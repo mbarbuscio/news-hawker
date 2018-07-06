@@ -28,7 +28,6 @@ export class WeatherService {
     });
 
     this.configService.coordinates.subscribe(coords => {
-      console.log(coords);
       this.getCurrentWeather(coords);
       this.getForecast(coords);
     });

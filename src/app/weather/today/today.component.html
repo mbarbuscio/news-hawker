@@ -1,5 +1,5 @@
 <a [class.hidden]="!Weather" *ngIf="Weather" (click)="toggleForecast()" class="toggle">
-  <img class="icon" [src]="weatherIcon()" >
+  <img class="icon toggle" [src]="weatherIcon()" >
   {{Weather.currentTemp | number: '1.0-1' }}
-  <img class="temp" src=".\assets\weather\celsius.svg" >
+  <img class="temp toggle" src=".\assets\weather\celsius.svg" >
 </a>
