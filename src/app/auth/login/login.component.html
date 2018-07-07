@@ -1,7 +1,10 @@
-<span>Want us to remember your preferences? Sign up here!</span>
+<div *ngIf="!loading">
+  <span>Want us to remember your preferences? Sign up here!</span>
 
-<div class="buttons">
-  <button class="fb" (click)="loginWithFB()"><i class="fab fa-facebook"></i> Login With Facebook</button>
+  <div class="buttons">
+    <button class="fb" (click)="loginWithFB()"><i class="fab fa-facebook"></i> Login With Facebook</button>
 
-  <button class="google" (click)="loginWithGoogle()" ><i class="fab fa-google"></i> Login With Google</button>
+    <button class="google" (click)="loginWithGoogle()" ><i class="fab fa-google"></i> Login With Google</button>
+  </div>
 </div>
+<app-spinner *ngIf="loading" isWhite="true"></app-spinner>

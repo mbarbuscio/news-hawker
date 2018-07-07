@@ -8,16 +8,20 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  loading: boolean = false;
+
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
   loginWithFB() {
+    this.loading = true;
     this.authService.doFacebookLogin();
   }
 
   loginWithGoogle() {
+    this.loading = true;
     this.authService.doGoogleLogin();
   }
 

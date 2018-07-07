@@ -23,7 +23,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { RouterModule } from '@angular/router';
 import { WeatherModule } from '../weather/weather.module';
 
-
 @NgModule({
   imports: [
     CommonModule,

@@ -17,6 +17,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { HomeComponent } from './home/home.component';
 import { LegalModule } from './legal/legal.module';
 import { WeatherModule } from './weather/weather.module';
+import { UtilsModule } from './utils/utils.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { WeatherModule } from './weather/weather.module';
     InfiniteScrollModule,
     AuthModule,
     LegalModule,
-    WeatherModule
+    WeatherModule,
+    UtilsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

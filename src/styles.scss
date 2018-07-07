@@ -9,7 +9,8 @@
 $primary: #f2709c;
 $secondary: #ff9472;
 $main-gradient: linear-gradient(to right, #f2709c, #ff9472);
-$alt-gradient: linear-gradient(to right, #43C6AC, #191654);
+$alt-gradient: linear-gradient(to right, #c31432, #240b36);
+//linear-gradient(to right, #43C6AC, #191654);
 
 @mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: white){
     overflow: hidden;
@@ -563,50 +564,124 @@ button {
     }
 }
 
-app-login {
-    padding: 10px;
-    &>span {
-        text-align: center;
-        color: white;
-        font-size: 18px;
-        display: block;
-        width: 100%;
-        padding: 5px;
-    }
-    &>.buttons {
-        padding: 10px 5px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        width: 100%;
-        &>* {
-            flex: 0 0 auto;
-            margin: 5px auto;
-        }
+app-spinner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    background: transparent;
+    .spinner{
+        position: absolute;
+        height: 200px;
+        width: 200px;
+        border: 3px solid transparent;
+        border-top-color: $secondary;
+        top: calc(50% - 100px);
+        left: calc(50% - 100px);
+        border-radius: 50%;
+        animation: spin 2s linear infinite;
 
-        &>button {
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-            border: none;
-            padding: 10px 20px;
-            font-size: 13px;
-            color: white;
-            border-radius: 2px;
-            width: 250px;
-            text-align: center;
-            &>i {
-                font-size: 15px;
-                margin-right: 6px;
-            }
-            &.fb{
-                background: #3b5998;
-            }
-            &.google {
-                background: white;
-                color: #d62d20;
+        &.white {
+        border-top-color: white;
+            &:before {
+                border-top-color: rgba(255,255,255,0.6);
+            }    
+            &:after{
+                border-top-color: rgba(255,255,255,0.4);
             }
         }
         
+        &:before, &:after{
+            content:'';
+            position: absolute;
+            border: 3px solid transparent;
+            border-radius: 50%;
+        }
+        
+        &:before{
+            border-top-color: $secondary;
+            top: -12px;
+            left: -12px;
+            right: -12px;
+            bottom: -12px;
+            animation: spin 3s linear infinite;
+        }
+        
+        &:after{
+            border-top-color: $secondary;
+            top: 6px;
+            left: 6px;
+            right: 6px;
+            bottom: 6px;  
+            animation: spin 4s linear infinite;
+        }
+    }
+
+    &>img {
+        height: 120px;
+        width: auto;
+        flex: 0 0 auto;
+    }
+
+    @keyframes spin{
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+    }
+}
+
+app-login {
+    padding: 10px;
+    min-height: 200px;
+    &>div {
+        &>span {
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            display: block;
+            width: 100%;
+            padding: 5px;
+        }
+        &>.buttons {
+            padding: 10px 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            &>* {
+                flex: 0 0 auto;
+                margin: 5px auto;
+            }
+    
+            &>button {
+                box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+                border: none;
+                padding: 10px 20px;
+                font-size: 13px;
+                color: white;
+                border-radius: 2px;
+                width: 250px;
+                text-align: center;
+                &>i {
+                    font-size: 15px;
+                    margin-right: 6px;
+                }
+                &.fb{
+                    background: #3b5998;
+                }
+                &.google {
+                    background: white;
+                    color: #d62d20;
+                }
+            }
+            
+        }
+    }
+    app-spinner {
+        height: 200px;
     }
 }
 
@@ -958,6 +1033,9 @@ app-forecast {
         }
     }
 }
+
+
+
 
 .mat-slide-toggle-content {
     color: white;
